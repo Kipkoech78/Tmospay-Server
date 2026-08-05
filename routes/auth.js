@@ -90,7 +90,7 @@ router.get('/dashboard', protect, async (req, res) => {
   const totalInvoiced = invoices.reduce((sum, i) => sum + i.amount, 0);
   const inProgress = invoices.filter((i) => i.status !== 'complete').length;
   const completed = invoices.filter((i) => i.status === 'complete').length;
-  const currency = invoices[0]?.currency || 'GBP';
+  const currency = invoices[0]?.currency || 'KSH';
   res.json({ totalInvoiced, currency, inProgress, completed, recent: invoices.slice(0, 10) });
 });
 
@@ -111,7 +111,7 @@ router.post('/invoices', protect, async (req, res) => {
     invoiceNumber: await makeInvoiceId(),
     userId: req.userId,
     amount: Number(amount),
-    currency: currency || 'GBP',
+    currency: currency || 'KSH',
     payoutNumber: payoutNumber || '',
     step: 1,
     totalSteps: STEP_LABELS.length,

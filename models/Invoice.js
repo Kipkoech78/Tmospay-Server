@@ -32,7 +32,7 @@ const invoiceSchema = new mongoose.Schema(
     invoiceNumber: { type: String, unique: true },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     amount: { type: Number, required: true },
-    currency: { type: String, default: 'GBP' },
+    currency: { type: String, default: 'KSH' },
     payoutNumber: String,
     step: { type: Number, default: 1 },
     totalSteps: { type: Number, default: STEP_LABELS.length },
