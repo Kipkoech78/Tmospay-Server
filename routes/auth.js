@@ -243,7 +243,7 @@ router.get('/invoices/:id/refund', protect, async (req, res) => {
 // ---------- support chat ----------
 const CANNED_REPLIES = [
   { match: /human|agent|person/i, reply: "Thanks for reaching out — an agent will respond shortly." },
-  { match: /refund/i, reply: 'Refunds for the processing fee unlock automatically after step 3 of your invoice.' },
+  { match: /refund|need|i/i, reply: 'Refunds for the processing fee unlock automatically after step 3 of your invoice.' },
   { match: /status|track/i, reply: 'You can track every invoice step by step from My Invoices.' },
   { match: /.*/, reply: "Hi! I'm Amina from tmospay support. How can I help today?" },
 ];
