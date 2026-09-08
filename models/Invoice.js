@@ -40,6 +40,9 @@ const invoiceSchema = new mongoose.Schema(
     confirmationScreenshot: String, // /uploads path — set at step 3
     receiptFile: String,            // /uploads path — set at step 7
     feeAmount: Number,
+    mpesaCode: { type: String, default: '' },
+    receiptCode: { type: String, default: '' },
+    verifiedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     feeCurrency: { type: String, default: 'KES' },
     feeRefunded: { type: Boolean, default: false }, // kept for backwards compat
     refund: { type: refundSchema, default: () => ({}) },

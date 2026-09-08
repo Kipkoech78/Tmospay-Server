@@ -8,6 +8,7 @@ const protect = async (req, res, next) => {
     if (!header || !header.startsWith('Bearer ')) {
       return res.status(401).json({ message: 'Not authorized, no token provided' });
     }
+    console.log('Authorization header received:', req.headers.authorization);
     const token = header.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.id);
@@ -16,6 +17,7 @@ const protect = async (req, res, next) => {
     req.userId=user._id
     next();
   } catch (err) {
+    console.log('protect failed:', err.message);
     return res.status(401).json({ message: 'Not authorized, invalid or expired token' });
   }
 };

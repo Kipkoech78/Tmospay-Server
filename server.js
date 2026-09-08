@@ -26,14 +26,8 @@ app.use('/api', authRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payments', paymentRoutes);
-app.use('/api/refunds', refundRoutes);
-app.use('/api/admin', adminRoutes);
-//image uploads
-// server.js — add after app.use('/api', invoiceRoutes) or wherever routes mount
-
-
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // no longer needed — files live on Cloudinary now
-
+//app.use('/api/refunds', refundRoutes);
+app.use('/api', adminRoutes);
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     if (err.code === 'LIMIT_FILE_SIZE') {
